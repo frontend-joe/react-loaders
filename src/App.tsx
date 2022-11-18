@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useLayoutEffect } from "react";
 
 function App() {
+  useLayoutEffect(() => {
+    const loader = document.getElementById("loader")!;
+    setTimeout(() => {
+      loader.classList.add("loaded");
+      setTimeout(() => {
+        document.body.removeChild(loader);
+      }, 300);
+    }, 2000);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main>
+      <header>
+        <h1 className="appear">Website</h1>
+        <nav className="appear" style={{ animationDelay: "0.2s" }}>
+          <a>Home</a>
+          <a>About</a>
+          <a>Contact</a>
+        </nav>
       </header>
-    </div>
+    </main>
   );
 }
 
